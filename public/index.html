@@ -1,0 +1,50 @@
+<html ng-app="myApp">
+<head>
+	<title>Lista de Contatos</title>
+
+
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+</head>
+<body>
+	<div class="container" ng-controller="AppCtrl">
+		<h1>Lista de Contatos</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Email</th>
+					<th>Telefone</th>
+					<th>Enviar</th>	
+				</tr>
+			</thead>
+			<tbody>
+				<tr>	
+					<td><input class="form-control" ng-model="contact.nome"></td>
+					<td><input class="form-control" ng-model="contact.email"></td>
+					<td><input class="form-control" ng-model="contact.telefone"></td>
+					<td><button class="btn btn-primary" ng-click="addContact()">Adicionar</button></td>
+				</tr>
+				<tr ng-repeat="contact in contactlist">
+					<td>{{contact.nome}}</td>
+					<td>{{contact.email}}</td>
+					<td>{{contact.telefone}}</td>
+					<td><button class="btn btn-danger" ng-click="rmvContact()">Deletar</button></td>
+					<td><button class="btn btn-warning" ng-click="updContact()">Editar Contato</button></td>
+
+				</tr>
+
+			</tbody>
+		</table>
+			
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+	<script src="controllers/controller.js"></script>
+
+</body>
+</html>
