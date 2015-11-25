@@ -6,6 +6,7 @@
 	<script type="text/javascript" src="js/angular/angular-locale_pt-br.js"></script>
 	<script type="text/javascript" src="js/controller.js"></script>
 	<script type="text/javascript" src="js/service.js"></script>
+		<script type="text/javascript" src="js/values.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="css/app.css">
 
@@ -15,7 +16,7 @@
 	<!-- Optional -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 </head>
-<body ng-controller="appCtrl" class="imagem-fundo">
+<body ng-controller="appCtrl" >
 
 	<div class="jumbotron">
 		<h2>Lista telefonica</h2>
@@ -26,12 +27,14 @@
 				<th><a href="" ng-click="ordenarPor('nome')">Nome</a></th>
 				<th><a href="" ng-click="ordenarPor('telefone')">Telefone</a></th>
 				<th><a href="" ng-click="ordenarPor('data')">Data</a></th>
+				<th>&nbsp;</th>
 			</tr>
 			<tr  ng-class="{selecionado: contato.selecionado}" ng-repeat="contato in contatos | filter: criterioBusca | orderBy:criterioOrdenamento:direcaoOrdenamento">
 				<td><input type="checkbox" ng-model="contato.selecionado"></td>
 				<td>{{contato.nome}}</td>
 				<td>{{contato.telefone}}</td>
 				<td>{{contato.data | date:'EEE, dd/MM/yyyy HH:mm'}}</td>
+				<td><button class="btn btn-warning btn-block" ng-click="editarContato(contato._id)" ng-disabled="hasContatosSelecionados(contatos)">Editar</button></td>
 
 			</tr>
 		</table>
@@ -49,7 +52,9 @@
 		<div class="alert alert-danger" ng-show="contatoForm.telefone.$error.pattern">Telefone deve sequir (##) ####-#### ou com digito 9 a mais!</div>
 
 		<button class="btn btn-primary btn-block" ng-click="adicionaContato(contato)" ng-disabled="contatoForm.$invalid" >Adicionar</button>
+		<button class="btn btn-info btn-block" ng-click="atualizarContato(contato)" ng-disabled="contatoForm.$invalid">Atualizar</button>
 		<button class="btn btn-danger btn-block" ng-click="deleteContato(contatos)" ng-if="hasContatosSelecionados(contatos)">Deletar</button>
+		
 
 	</div>
 

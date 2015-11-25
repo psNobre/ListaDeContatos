@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express');
 var mongojs = require('mongojs');
 var bodyParser = require('body-parser');
@@ -18,11 +20,11 @@ app.get('/contatos', function (req, res) {
     });
 });
 
-/**
-app.get("/contactlist/:id", function (req, res) {
+
+app.get("/contatos/:id", function (req, res) {
     console.log('GET Request recebido.');
     var id = req.params.id;
-    db.contactlist.findOne({_id: mongojs.ObjectId(id)}, function (err, doc) {
+    db.contatos.findOne({_id: mongojs.ObjectId(id)}, function (err, doc) {
         console.log(doc);
         res.json(doc);
         console.log("GET Response respondido.");
@@ -30,20 +32,20 @@ app.get("/contactlist/:id", function (req, res) {
 });
 
 //POSTs
-app.post('/contactlist', function (req, res) {
+app.post('/contatos', function (req, res) {
     console.log('POST Request recebido.');
     console.log(req.body);
-    db.contactlist.insert(req.body, function (err, doc) {
+    db.contatos.insert(req.body, function (err, doc) {
         res.json(doc);
         console.log("POST Response respondido.");
     })
 });
 
 //DELETEs
-app.delete('/contactlist/:id', function (req, res) {
+app.delete('/contatos/:id', function (req, res) {
     var id = req.params.id;
     console.log("DELETE Request recebido: objectId - "+id);
-    db.contactlist.remove({_id: mongojs.ObjectId(id)}, function (err, doc) {
+    db.contatos.remove({_id: mongojs.ObjectId(id)}, function (err, doc) {
         res.json(doc);
         console.log("DELETE Response enviado.");
     });
@@ -51,17 +53,17 @@ app.delete('/contactlist/:id', function (req, res) {
 });
 
 //PUTs
-app.put('/contactlist/:id', function (req, res) {
+app.put('/contatos/:id', function (req, res) {
      var id = req.params.id;
      console.log("PUT Request recebido.");
-     db.contactlist.findAndModify({query: {_id: mongojs.ObjectId(id)},
+     db.contatos.findAndModify({query: {_id: mongojs.ObjectId(id)},
      update: {$set: {nome: req.body.nome, email: req.body.email, telefone: req.body.telefone}}, new: true}, function (err, doc) {
          res.json(doc);
          console.log("PUT Response enviado.");
         });
 
 });
-**/
+
 
 app.listen(3000);
 console.log("Server Rodando: porta 3000");
