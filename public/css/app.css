@@ -1,0 +1,51 @@
+body{
+	background-color: #B0BEC5 !important;
+
+}
+a{
+	color: #7B7659  !important;
+}
+
+h2{ 
+	font-family: verdana !important;
+	color: #7B7659 !important;
+}
+
+th{
+	background-color: #EFE0B0;
+}
+td{
+	color: #7B7659;
+
+}
+
+.table {
+	margin-top: 20px;	
+}
+.selecionado{
+	background-color: #ffebee;
+}
+
+.jumbotron {	
+	background-color: #FEFDE4 !important;
+	width: 550px;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	border-radius: 20px;
+	padding: 20px;
+
+}
+
+.imagem-fundo{
+	background: url("../img/telefone-fundo.jpg") center center;
+	width: 100%;
+	height: 100%;
+}
+
+.form-control{
+	margin-top: auto;
+	margin-bottom: 10px;
+
+}

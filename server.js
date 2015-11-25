@@ -3,21 +3,22 @@ var mongojs = require('mongojs');
 var bodyParser = require('body-parser');
 
 var app = express();
-var db = mongojs('contactlist',['contactlist']);
+var db = mongojs('contactlist',['contatos']);
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 
 //GETs
-app.get('/contactlist', function (req, res) {
+app.get('/contatos', function (req, res) {
 	console.log('GET Request recebido.');
-    db.contactlist.find(function (err, docs) {
+    db.contatos.find(function (err, docs) {
         console.log(docs);
         res.json(docs);
         console.log("GET Response respondido.");
     });
 });
 
+/**
 app.get("/contactlist/:id", function (req, res) {
     console.log('GET Request recebido.');
     var id = req.params.id;
@@ -60,6 +61,7 @@ app.put('/contactlist/:id', function (req, res) {
         });
 
 });
+**/
 
 app.listen(3000);
 console.log("Server Rodando: porta 3000");
