@@ -1,5 +1,6 @@
 <html ng-app="meuApp">
 <head>
+	<meta charset="utf-8">
 	<title>Lista Telefones</title>
 	<script type="text/javascript" src="js/angular/angular.min.js"></script>
 	<script type="text/javascript" src="js/angular/ngMask.min.js"></script>
@@ -16,7 +17,7 @@
 	<!-- Optional -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 </head>
-<body ng-controller="appCtrl" >
+<body ng-controller="appCtrl" class="imagem-fundo">
 
 	<div class="jumbotron">
 		<h2>Lista telefonica</h2>
@@ -26,7 +27,7 @@
 				<th>&nbsp;</th>
 				<th><a href="" ng-click="ordenarPor('nome')">Nome</a></th>
 				<th><a href="" ng-click="ordenarPor('telefone')">Telefone</a></th>
-				<th><a href="" ng-click="ordenarPor('data')">Data</a></th>
+				<th><a href="" ng-click="ordenarPor('data')">Data de Modificação</a></th>
 				<th>&nbsp;</th>
 			</tr>
 			<tr  ng-class="{selecionado: contato.selecionado}" ng-repeat="contato in contatos | filter: criterioBusca | orderBy:criterioOrdenamento:direcaoOrdenamento">
@@ -51,8 +52,8 @@
 		<div class="alert alert-danger" ng-show="contatoForm.telefone.$error.required && contatoForm.telefone.$dirty">Preencha o campo Telefone!</div>
 		<div class="alert alert-danger" ng-show="contatoForm.telefone.$error.pattern">Telefone deve sequir (##) ####-#### ou com digito 9 a mais!</div>
 
-		<button id="btnadd" class="btn btn-primary btn-block" ng-click="adicionaContato(contato)" ng-disabled="contatoForm.$invalid">Adicionar</button>
-		<button id="btnupd" class="btn btn-info btn-block" ng-click="atualizarContato(contato)"  ng-disabled="contatoForm.$invalid" >Atualizar</button>
+		<button id="btn-add" class="btn btn-primary btn-block" ng-click="adicionaContato(contato)" ng-disabled="contatoForm.$invalid">Adicionar</button>
+		<button id="btn-upd" class="btn btn-info btn-block" ng-click="atualizarContato(contato)"  ng-disabled="contatoForm.$invalid" >Atualizar</button>
 		<button class="btn btn-danger btn-block" ng-click="deleteContato(contatos)" ng-if="hasContatosSelecionados(contatos)">Deletar</button>
 
 	</div>
