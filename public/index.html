@@ -51,10 +51,9 @@
 		<div class="alert alert-danger" ng-show="contatoForm.telefone.$error.required && contatoForm.telefone.$dirty">Preencha o campo Telefone!</div>
 		<div class="alert alert-danger" ng-show="contatoForm.telefone.$error.pattern">Telefone deve sequir (##) ####-#### ou com digito 9 a mais!</div>
 
-		<button class="btn btn-primary btn-block" ng-click="adicionaContato(contato)" ng-disabled="contatoForm.$invalid" >Adicionar</button>
-		<button class="btn btn-info btn-block" ng-click="atualizarContato(contato)" ng-disabled="contatoForm.$invalid">Atualizar</button>
+		<button id="btnadd" class="btn btn-primary btn-block" ng-click="adicionaContato(contato)" ng-disabled="contatoForm.$invalid">Adicionar</button>
+		<button id="btnupd" class="btn btn-info btn-block" ng-click="atualizarContato(contato)"  ng-disabled="contatoForm.$invalid" >Atualizar</button>
 		<button class="btn btn-danger btn-block" ng-click="deleteContato(contatos)" ng-if="hasContatosSelecionados(contatos)">Deletar</button>
-		
 
 	</div>
 

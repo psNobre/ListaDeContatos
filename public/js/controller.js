@@ -9,6 +9,9 @@ meuApp.controller('appCtrl',function ($scope, contatoService) {
 	var carregarContatos = function () {
 		contatoService.getContatos().success(function  (response) {
 			$scope.contatos = response;
+			console.log(response);
+			document.getElementById("btnupd").style.display = "none";
+			document.getElementById("btnadd").style.display = "inline";
 		});
 	}	
 
@@ -35,8 +38,9 @@ meuApp.controller('appCtrl',function ($scope, contatoService) {
 
 	$scope.editarContato = function (id) {
 		contatoService.getOneContato(id).success(function  (response) {
-			console.log(response);
 			$scope.contato = response;
+			 document.getElementById("btnadd").style.display = "none";
+			 document.getElementById("btnupd").style.display = "inline";
 		});
 	}
 
@@ -46,6 +50,7 @@ meuApp.controller('appCtrl',function ($scope, contatoService) {
 			delete $scope.contato;
 			$scope.contatoForm.$setPristine();
 			carregarContatos();
+			
 		});
 	}
 

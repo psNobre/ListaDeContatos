@@ -57,7 +57,7 @@ app.put('/contatos/:id', function (req, res) {
      var id = req.params.id;
      console.log("PUT Request recebido.");
      db.contatos.findAndModify({query: {_id: mongojs.ObjectId(id)},
-     update: {$set: {nome: req.body.nome, email: req.body.email, telefone: req.body.telefone}}, new: true}, function (err, doc) {
+     update: {$set: {nome: req.body.nome, telefone: req.body.telefone, data: new Date()}}, new: true}, function (err, doc) {
          res.json(doc);
          console.log("PUT Response enviado.");
         });
